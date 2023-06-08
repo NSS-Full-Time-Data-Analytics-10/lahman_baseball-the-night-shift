@@ -11,7 +11,7 @@ WITH avg_attendance AS (SELECT team, ROUND(SUM(attendance), 0)::int/SUM(games) A
 			SELECT teams.name, teams.park, avg_attend
 			FROM homegames	INNER JOIN avg_attendance USING (team)
 							INNER JOIN teams ON teams.teamid = homegames.team
-			WHERE homegames.attendance > avg_attend AND games > 10
+			WHERE yearid = '2016' AND homegames.attendance > avg_attend AND games > 10
 			GROUP BY teams.name, teams.park, avg_attendance.avg_attend
 			ORDER BY avg_attend DESC
 			LIMIT 5;
@@ -28,7 +28,7 @@ WITH avg_attendance AS (SELECT team, ROUND(SUM(attendance), 0)::int/SUM(games) A
 			SELECT teams.name, teams.park, avg_attend
 			FROM homegames	INNER JOIN avg_attendance USING (team)
 							INNER JOIN teams ON teams.teamid = homegames.team
-			WHERE homegames.attendance > avg_attend AND games > 10
+			WHERE yearid = '2016' AND homegames.attendance > avg_attend AND games > 10
 			GROUP BY teams.name, teams.park, avg_attendance.avg_attend
 			ORDER BY avg_attend
 			LIMIT 5;
@@ -56,5 +56,9 @@ FROM homegames
 WHERE year = '2016' 
 
 SELECT yearid, name, park
+FROM teams
+WHERE yearid = '2016' 
+
+SELECT *
 FROM teams
 WHERE yearid = '2016' 
