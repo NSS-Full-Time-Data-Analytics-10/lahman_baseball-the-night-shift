@@ -14,3 +14,4 @@ SELECT SUM(po), pos_group
 FROM pos_group
 GROUP BY pos_group;
 
+--
